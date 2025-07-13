@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -36,9 +37,10 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
 
     // Análise Qiskit
     if (results.qiskit) {
-      const totalShots = Object.values(results.qiskit).reduce((a: number, b: number) => a + b, 0);
-      const state00 = results.qiskit['00'] || 0;
-      const state11 = results.qiskit['11'] || 0;
+      const qiskitResults = results.qiskit as Record<string, number>;
+      const totalShots = Object.values(qiskitResults).reduce((a: number, b: number) => a + b, 0);
+      const state00 = qiskitResults['00'] || 0;
+      const state11 = qiskitResults['11'] || 0;
       const entanglement = Math.abs(state00 - state11) / totalShots;
       
       if (entanglement < 0.1) {
@@ -54,9 +56,10 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
 
     // Análise Cirq
     if (results.cirq) {
-      const values = Object.values(results.cirq) as number[];
+      const cirqResults = results.cirq as Record<string, number>;
+      const values = Object.values(cirqResults);
       const maxState = Math.max(...values);
-      const dominantState = Object.entries(results.cirq).find(([_, count]) => count === maxState)?.[0];
+      const dominantState = Object.entries(cirqResults).find(([_, count]) => count === maxState)?.[0];
       
       agentDecisions.push({
         type: 'optimization',
