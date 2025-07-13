@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +29,7 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
   const analyzeResults = async () => {
     setIsThinking(true);
     
-    // Simular processamento da IA
+    // Simular processamento da IA RAVIAN QUANTUM
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     const agentDecisions: AgentDecision[] = [];
@@ -38,13 +37,13 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
     // Análise Qiskit
     if (results.qiskit) {
       const totalShots = Object.values(results.qiskit).reduce((a: number, b: number) => a + b, 0);
-      const entanglement = Math.abs(results.qiskit['00'] - results.qiskit['11']) / totalShots;
+      const entanglement = Math.abs((results.qiskit['00'] || 0) - (results.qiskit['11'] || 0)) / totalShots;
       
       if (entanglement < 0.1) {
         agentDecisions.push({
           type: 'analysis',
           title: 'Emaranhamento Perfeito Detectado',
-          description: 'O sistema Qiskit demonstrou emaranhamento quântico ideal com distribuição uniforme entre estados |00⟩ e |11⟩.',
+          description: 'RAVIAN QUANTUM detectou emaranhamento quântico ideal com distribuição uniforme entre estados |00⟩ e |11⟩.',
           confidence: 0.95,
           framework: 'Qiskit'
         });
@@ -53,40 +52,41 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
 
     // Análise Cirq
     if (results.cirq) {
-      const maxState = Math.max(...Object.values(results.cirq));
+      const values = Object.values(results.cirq) as number[];
+      const maxState = Math.max(...values);
       const dominantState = Object.entries(results.cirq).find(([_, count]) => count === maxState)?.[0];
       
       agentDecisions.push({
         type: 'optimization',
         title: 'Otimização de Circuito Identificada',
-        description: `Cirq otimizou o circuito com estado dominante ${dominantState}. Recomendo usar esta configuração para próximas execuções.`,
+        description: `RAVIAN QUANTUM otimizou o circuito com estado dominante ${dominantState}. Recomendo usar esta configuração para próximas execuções.`,
         confidence: 0.87,
         framework: 'Cirq'
       });
     }
 
     // Análise Strawberry Fields
-    if (results.strawberryFields) {
+    if (results.strawberryFields && Array.isArray(results.strawberryFields)) {
       const variance = calculateVariance(results.strawberryFields);
       
       if (variance > 1) {
         agentDecisions.push({
           type: 'alert',
           title: 'Alta Variabilidade Fotônica',
-          description: 'Detectada alta variância nas medições fotônicas. Considerar ajuste dos parâmetros de squeeze.',
+          description: 'RAVIAN QUANTUM detectou alta variância nas medições fotônicas. Considerar ajuste dos parâmetros de squeeze.',
           confidence: 0.78,
           framework: 'Strawberry Fields'
         });
       }
     }
 
-    // Decisão integrativa
+    // Decisão integrativa do RAVIAN QUANTUM
     agentDecisions.push({
       type: 'recommendation',
-      title: 'Fusão Quântica Recomendada',
-      description: 'Baseado na análise multi-framework, recomendo combinar a estabilidade do Qiskit com a otimização do Cirq para máxima eficiência.',
+      title: 'Arquitetura Quântica Recomendada',
+      description: 'RAVIAN QUANTUM recomenda combinar a estabilidade do Qiskit com a otimização do Cirq para máxima eficiência arquitetural.',
       confidence: 0.92,
-      framework: 'Multi-Framework'
+      framework: 'RAVIAN QUANTUM'
     });
 
     setDecisions(agentDecisions);
@@ -126,15 +126,15 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
       <CardHeader>
         <CardTitle className="flex items-center space-x-2 text-white">
           <Brain className="h-6 w-6 text-indigo-400 animate-pulse" />
-          <span>IA Agêntica - Análise Integrada</span>
+          <span>RAVIAN QUANTUM - Agente Arquiteto Quântico</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {isThinking ? (
           <div className="text-center py-8">
             <Brain className="h-12 w-12 mx-auto text-indigo-400 animate-spin mb-4" />
-            <p className="text-indigo-300">Analisando resultados multi-framework...</p>
-            <p className="text-sm text-gray-400 mt-2">Processamento quântico inteligente em andamento</p>
+            <p className="text-indigo-300">RAVIAN QUANTUM analisando arquitetura quântica...</p>
+            <p className="text-sm text-gray-400 mt-2">Processamento agêntico multi-framework em andamento</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -168,10 +168,10 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
             <div className="mt-4 p-3 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-lg border border-purple-700/30">
               <div className="text-center">
                 <div className="text-sm font-semibold text-purple-300 mb-1">
-                  Status da IA Agêntica
+                  Status RAVIAN QUANTUM
                 </div>
                 <div className="text-xs text-gray-400">
-                  Sistema adaptativo ativo • Aprendizado contínuo • Decisões autônomas
+                  Agente arquiteto ativo • Análise contínua • Decisões autônomas
                 </div>
               </div>
             </div>

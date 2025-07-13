@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { Play, Cpu, Zap, Activity, Brain, Eye } from 'lucide-react';
+import { Play, Cpu, Zap, Brain, Sparkles } from 'lucide-react';
 import QiskitModule from './quantum-modules/QiskitModule';
 import CirqModule from './quantum-modules/CirqModule';
 import QSharpModule from './quantum-modules/QSharpModule';
@@ -26,7 +26,7 @@ const QuantumDashboard = () => {
     setShowResults(false);
     setAgentActive(false);
 
-    // Simular execução progressiva
+    // Simular execução progressiva do RAVIAN QUANTUM
     for (let i = 0; i <= 100; i += 5) {
       setExecutionProgress(i);
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -44,8 +44,8 @@ const QuantumDashboard = () => {
         2: 18,
         3: 15
       },
-      qsharp: "Resultado simbólico da execução Q# (HelloQuantum)",
-      quipper: `-- Quipper Pseudo-Code (representação)
+      qsharp: "Resultado simbólico da execução Q# (HelloQuantum) - RAVIAN QUANTUM",
+      quipper: `-- Quipper Pseudo-Code (RAVIAN QUANTUM)
 import Quipper
 main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
       strawberryFields: [0, 1, 0, 2, 1]
@@ -55,7 +55,7 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
     setIsExecuting(false);
     setShowResults(true);
     
-    // Ativar IA agêntica após mostrar resultados
+    // Ativar RAVIAN QUANTUM após mostrar resultados
     setTimeout(() => {
       setAgentActive(true);
     }, 1000);
@@ -66,14 +66,14 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex justify-center items-center space-x-3">
-          <Brain className="h-12 w-12 text-purple-400 animate-pulse" />
+          <Sparkles className="h-12 w-12 text-purple-400 animate-pulse" />
           <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-            QUANTAGENT-X
+            RAVIAN QUANTUM
           </h1>
-          <Zap className="h-12 w-12 text-cyan-400 animate-pulse" />
+          <Brain className="h-12 w-12 text-cyan-400 animate-pulse" />
         </div>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-          IA Agêntica Quântica Unificada - Sistema adaptativo baseado em 5 linguagens de computação quântica
+          Agente Arquiteto Quântico - Sistema agêntico unificado baseado em 5 linguagens de computação quântica
         </p>
         <div className="flex justify-center space-x-2">
           <Badge variant="secondary" className="bg-purple-900/50 text-purple-300">Qiskit</Badge>
@@ -89,7 +89,7 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
         <CardHeader>
           <CardTitle className="flex items-center space-x-2 text-white">
             <Cpu className="h-6 w-6" />
-            <span>Painel de Controle Agêntico</span>
+            <span>Painel de Controle - RAVIAN QUANTUM</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -101,14 +101,14 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-3"
             >
               <Play className="h-5 w-5 mr-2" />
-              {isExecuting ? 'Executando IA Agêntica...' : 'Executar QUANTAGENT-X'}
+              {isExecuting ? 'Executando RAVIAN QUANTUM...' : 'Executar RAVIAN QUANTUM'}
             </Button>
           </div>
           
           {isExecuting && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm text-gray-300">
-                <span>Processamento Multi-Framework</span>
+                <span>RAVIAN QUANTUM - Processamento Multi-Framework</span>
                 <span>{executionProgress}%</span>
               </div>
               <Progress value={executionProgress} className="h-2" />
@@ -125,7 +125,7 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
         />
       )}
 
-      {/* IA Agêntica */}
+      {/* RAVIAN QUANTUM Agent */}
       {showResults && (
         <QuantumAgent 
           results={results} 
@@ -144,8 +144,8 @@ main = print_generic Preview (teleportation :: Circ (Qubit, Qubit) -> Circ ())`,
 
       {/* Footer */}
       <div className="text-center text-gray-400 text-sm">
-        <p>QUANTAGENT-X - IA Agêntica com fusão adaptativa de 5 linguagens quânticas</p>
-        <p className="text-xs mt-1">Sistema autônomo • Aprendizado contínuo • Decisões inteligentes</p>
+        <p>RAVIAN QUANTUM - Agente Arquiteto com fusão adaptativa de 5 linguagens quânticas</p>
+        <p className="text-xs mt-1">Sistema autônomo • Aprendizado contínuo • Decisões arquiteturais inteligentes</p>
       </div>
     </div>
   );
