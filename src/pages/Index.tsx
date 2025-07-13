@@ -1,12 +1,8 @@
 
-import QuantumDashboard from "@/components/QuantumDashboard";
+import { MainDashboard } from "@/components/dashboard/MainDashboard";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black">
-      <QuantumDashboard />
-    </div>
-  );
+  return <MainDashboard />;
 };
 
 export default Index;
