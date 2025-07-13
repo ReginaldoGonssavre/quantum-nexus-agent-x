@@ -37,7 +37,9 @@ const QuantumAgent: React.FC<QuantumAgentProps> = ({ results, isActive }) => {
     // Análise Qiskit
     if (results.qiskit) {
       const totalShots = Object.values(results.qiskit).reduce((a: number, b: number) => a + b, 0);
-      const entanglement = Math.abs((results.qiskit['00'] || 0) - (results.qiskit['11'] || 0)) / totalShots;
+      const state00 = results.qiskit['00'] || 0;
+      const state11 = results.qiskit['11'] || 0;
+      const entanglement = Math.abs(state00 - state11) / totalShots;
       
       if (entanglement < 0.1) {
         agentDecisions.push({
