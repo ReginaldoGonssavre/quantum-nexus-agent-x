@@ -10,6 +10,7 @@ import { PricingPlans } from '../pricing/PricingPlans';
 import { UserProfile, AuthProvider } from '../auth/AuthSystem';
 import { AgentRegistry } from '../nanda/AgentRegistry';
 import { InterAgentCommunication } from '../nanda/InterAgentCommunication';
+import { NandaBackendIntegration } from '../nanda/NandaBackendIntegration';
 import { 
   Brain, 
   Trophy, 
@@ -19,7 +20,8 @@ import {
   Settings, 
   Sparkles,
   Network,
-  MessageSquare
+  MessageSquare,
+  Server
 } from 'lucide-react';
 
 export const MainDashboard: React.FC = () => {
@@ -47,7 +49,7 @@ export const MainDashboard: React.FC = () => {
 
           {/* Navigation Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-8 bg-black/30 border border-purple-500/30">
+            <TabsList className="grid w-full grid-cols-9 bg-black/30 border border-purple-500/30">
               <TabsTrigger value="quantum" className="flex items-center space-x-2">
                 <Brain className="h-4 w-4" />
                 <span>Quantum Lab</span>
@@ -79,6 +81,10 @@ export const MainDashboard: React.FC = () => {
               <TabsTrigger value="communication" className="flex items-center space-x-2">
                 <MessageSquare className="h-4 w-4" />
                 <span>Network</span>
+              </TabsTrigger>
+              <TabsTrigger value="backend" className="flex items-center space-x-2">
+                <Server className="h-4 w-4" />
+                <span>Backend</span>
               </TabsTrigger>
             </TabsList>
 
@@ -121,6 +127,10 @@ export const MainDashboard: React.FC = () => {
 
             <TabsContent value="communication" className="space-y-6">
               <InterAgentCommunication />
+            </TabsContent>
+
+            <TabsContent value="backend" className="space-y-6">
+              <NandaBackendIntegration />
             </TabsContent>
           </Tabs>
         </div>
