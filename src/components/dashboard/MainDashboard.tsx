@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { QuantumDashboard } from '../QuantumDashboard';
+import QuantumDashboard from '../QuantumDashboard';
 import { BenchmarkSystem } from '../scientific/BenchmarkSystem';
 import { ResearchPapers } from '../scientific/ResearchPapers';
 import { QuantumAPI } from '../api/QuantumAPI';
