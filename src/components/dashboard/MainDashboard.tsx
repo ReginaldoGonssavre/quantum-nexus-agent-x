@@ -8,6 +8,8 @@ import { ResearchPapers } from '../scientific/ResearchPapers';
 import { QuantumAPI } from '../api/QuantumAPI';
 import { PricingPlans } from '../pricing/PricingPlans';
 import { UserProfile, AuthProvider } from '../auth/AuthSystem';
+import { AgentRegistry } from '../nanda/AgentRegistry';
+import { InterAgentCommunication } from '../nanda/InterAgentCommunication';
 import { 
   Brain, 
   Trophy, 
@@ -15,7 +17,9 @@ import {
   Code, 
   CreditCard, 
   Settings, 
-  Sparkles 
+  Sparkles,
+  Network,
+  MessageSquare
 } from 'lucide-react';
 
 export const MainDashboard: React.FC = () => {
@@ -43,7 +47,7 @@ export const MainDashboard: React.FC = () => {
 
           {/* Navigation Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-6 bg-black/30 border border-purple-500/30">
+            <TabsList className="grid w-full grid-cols-8 bg-black/30 border border-purple-500/30">
               <TabsTrigger value="quantum" className="flex items-center space-x-2">
                 <Brain className="h-4 w-4" />
                 <span>Quantum Lab</span>
@@ -67,6 +71,14 @@ export const MainDashboard: React.FC = () => {
               <TabsTrigger value="settings" className="flex items-center space-x-2">
                 <Settings className="h-4 w-4" />
                 <span>Config</span>
+              </TabsTrigger>
+              <TabsTrigger value="agents" className="flex items-center space-x-2">
+                <Network className="h-4 w-4" />
+                <span>Agents</span>
+              </TabsTrigger>
+              <TabsTrigger value="communication" className="flex items-center space-x-2">
+                <MessageSquare className="h-4 w-4" />
+                <span>Network</span>
               </TabsTrigger>
             </TabsList>
 
@@ -101,6 +113,14 @@ export const MainDashboard: React.FC = () => {
                   </p>
                 </CardContent>
               </Card>
+            </TabsContent>
+
+            <TabsContent value="agents" className="space-y-6">
+              <AgentRegistry />
+            </TabsContent>
+
+            <TabsContent value="communication" className="space-y-6">
+              <InterAgentCommunication />
             </TabsContent>
           </Tabs>
         </div>
